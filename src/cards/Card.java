@@ -2,6 +2,7 @@ package src.cards;
 public abstract class Card {
     // The card suit.
     protected String suit;
+    // The number of the card (i.e. base-value and position).
     protected Integer number;
 
     public Card(Integer number) {

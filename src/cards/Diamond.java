@@ -6,6 +6,7 @@ public class Diamond extends Card {
         this.suit = "Diamonds";
     }
 
+    // Returns the sum of the number-value + the value of the suit.
     @Override
     public Integer getValue() {
         return this.number + 4;

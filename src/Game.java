@@ -38,18 +38,6 @@ public class Game {
         System.out.printf("You won round %d!%n", Game.currentRound);
     }
 
-    // The constructor is private because of singleton-pattern of this class.
-    public Game() {
-        // Sets the logger for this class.
-        Game.logger = Logger.getLogger(Game.class.getName());
-
-        // The games author.
-        Game.author = "Philip Rosenqvist";
-
-        // Title of the game.
-        Game.title = "Philip's Lucky Game";
-    }
-
     // Sets the card deck that the game should use.
     public static void setDeck(Deck deck) {
         Game.deck = deck;
@@ -67,12 +55,17 @@ public class Game {
         System.out.println(message);
     }
 
+    public static void setLogger(Logger logger) {
+        Game.logger = logger;
+    }
+
     /*
     * Sets the initial game-values for the game i.e. score and status.
     * Also checks if it has a deck to use etc.
     * NOTE: Exception will happen if no deck is set!
     * */
     public static void init() {
+
         try {
 
             // If the game is missing a card deck, an error will be thrown.
@@ -82,13 +75,15 @@ public class Game {
             Game.status = false;
             Game.score = 0;
             Game.currentRound = 0;
+            Game.author = "Philip Rosenqvist";
+            Game.title = "Philip's Lucky Game";
 
             // The cards to add to deck later.
             ArrayList<Card> cards = new ArrayList<>();
             // Adds the card suits to the cards array.
             int cardTypeIterator = 0;
             while (cardTypeIterator < 4) {
-                for (int cardValue = Deck.getMinCardValue(); cardValue <= Deck.getMaxCardValue(); cardValue++) {
+                for (int cardValue = Game.deck.getMinCardValue(); cardValue <= Game.deck.getMaxCardValue(); cardValue++) {
                     switch (cardTypeIterator) {
                         case 0 ->
                             // Hearts
@@ -110,7 +105,7 @@ public class Game {
             }
 
             // Sets the cards to deck.
-            Deck.setCards(cards);
+            Game.deck.setCards(cards);
 
         } catch (Exception exception) {
             Game.logger.log(Level.SEVERE, "Error occurred while initiating the game:\n\t", exception);
@@ -139,7 +134,7 @@ public class Game {
                 System.out.printf("#### RUNDA %d! ####%n", Game.currentRound);
 
                 // Gets a shuffled deck of cards for this round.
-                ArrayList<Card> cards = Deck.getShuffledCards();
+                ArrayList<Card> cards = Game.deck.getShuffledCards();
 
                 // ALl the values from the cards.
                 int[] values;
