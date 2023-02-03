@@ -3,15 +3,12 @@ public class Club extends Card {
 
     public Club(Integer value) {
         super(value);
+        this.suit = "Clubs";
     }
 
     @Override
-    Integer getValue() {
-        return this.value + 6;
+    public Integer getValue() {
+        return this.number + 6;
     }
 
-    @Override
-    String getSuit() {
-        return "Clubs";
-    }
 }

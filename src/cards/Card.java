@@ -1,14 +1,20 @@
 package src.cards;
 public abstract class Card {
-    // Value of the card.
-    protected Integer value;
-    // Sets the value of the card.
-    public Card(Integer value) {
-        this.value = value;
+    // The card suit.
+    protected String suit;
+    protected Integer number;
+
+    public Card(Integer number) {
+        // The card number.
+        this.number = number;
     }
-    // Gets the value of the card.
-    abstract Integer getValue();
-    // Gets the suit of the card.
-    abstract String getSuit();
+
+    // Returns the value of the card.
+    public abstract Integer getValue();
+
+    // Gets the card as string.
+    public String getCard() {
+        return String.format("%s %d", this.suit, this.number);
+    }
 }
 

@@ -1,24 +1,20 @@
+import src.Game;
 import src.decks.Deck;
 
 public class Main {
     public static void main(String[] args) {
 
-        // Instance of the game.
-        src.Game game = src.Game.getInstance();
-
         // Instance of the deck.
-        Deck deck = new Deck();
-
-        deck.addCards();
+        Deck deck = new Deck(1, 13);
 
         // Sets the deck for the game.
-        game.setDeck(deck);
+        Game.setDeck(deck);
 
         // Initiating the game.
-        game.init();
+        Game.init();
 
         // Runs the game.
-        game.run();
+        Game.run();
 
     }
 }

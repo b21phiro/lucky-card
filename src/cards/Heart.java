@@ -1,17 +1,12 @@
 package src.cards;
 public class Heart extends Card {
-
     public Heart(Integer value) {
         super(value);
+        this.suit = "Hearts";
     }
 
     @Override
-    Integer getValue() {
-        return this.value + 8;
-    }
-
-    @Override
-    String getSuit() {
-        return "Hearts";
+    public Integer getValue() {
+        return this.number + 8;
     }
 }

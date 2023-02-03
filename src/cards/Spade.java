@@ -1,17 +1,12 @@
 package src.cards;
 public class Spade extends Card {
-
     public Spade(Integer value) {
         super(value);
+        this.suit = "Spades";
     }
 
     @Override
-    Integer getValue() {
-        return this.value + 10;
-    }
-
-    @Override
-    String getSuit() {
-        return "Spades";
+    public Integer getValue() {
+        return this.number + 10;
     }
 }
