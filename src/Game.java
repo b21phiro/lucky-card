@@ -31,6 +31,13 @@ public class Game {
     // The card-deck that is being used.
     protected static Deck deck;
 
+    // The player won a round.
+    private static void won() {
+        // Player won.
+        Game.score++;
+        System.out.printf("You won round %d!%n", Game.currentRound);
+    }
+
     // The constructor is private because of singleton-pattern of this class.
     public Game() {
         // Sets the logger for this class.
@@ -150,11 +157,14 @@ public class Game {
                 }
 
                 // If the third card-value is between the first and second value, then the player wins.
-                if (values[2] > values[0] && values[2] < values[1] || values[2] > values[1] && values[2] < values[0]) {
+                if (values[2] > values[0] && values[2] < values[1]) {
                     // Player won.
-                    Game.score++;
-                    System.out.printf("You won round %d!%n", Game.currentRound);
-                } else {
+                    Game.won();
+                } else if (values[2] > values[1] && values[2] < values[0]) {
+                    // Player won.
+                    Game.won();
+                }
+                else {
                     // Player lost.
                     System.out.printf("You lost the round %d.%n", Game.currentRound);
                 }
